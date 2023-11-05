@@ -1,11 +1,15 @@
-<form id="taxcode" name="taxcode" [formGroup]="taxcodeForm" (ngSubmit)="console.log(this.nameUser?.errors)">
-  <div id="name-input-field">
-    <label for="nameUser" >Nome: </label>
-    <input type="text" required name="nameUser" id="nameUser" formControlName="nameUser"/>
-    <span *ngIf="nameUser?.touched && nameUser?.errors">
+<form id="taxcode" name="taxcode" [formGroup]="taxcodeForm">
+  <div id="name-input-field" >
+    <label for="name" >Nome: </label>
+    <input type="text" required name="name" id="name" formControlName="nameInput"/>
+    <span *ngIf=" nameInput?.value != '' && nameInput?.touched && nameInput?.errors">
       <p>Il nome non può contenere numeri o caratteri speciali, controllare nuovamente!</p>
     </span>
+    <span *ngIf="nameInput?.hasError('required') && nameInput?.touched">
+      <p>Il campo del nome è vuoto!</p>
+    </span>
   </div>
+
   <div id="surname-input-field">
     <label for="surname">Cognome: </label>
     <input type="text" required name="surname" id="surname"/>

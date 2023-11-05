@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {AbstractControl, AbstractControlOptions, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Component} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {nameValidator} from "./name.directive";
 
 
@@ -10,13 +10,14 @@ import {nameValidator} from "./name.directive";
 })
 export class AppComponent {
   constructor(private builder: FormBuilder) {
-    this.taxcodeForm = this.builder.group({nameUser: this.builder.nonNullable.control('', [Validators.required, nameValidator()]), options: {updateOn:'submit'}})
+    this.taxcodeForm = this.builder.nonNullable.group({nameInput: this.builder.nonNullable.control('', [Validators.required, nameValidator()])}, {updateOn: 'submit'})
+
   }
 
-  taxcodeForm;
-  get nameUser() {
-    return this.taxcodeForm.get("nameUser");
+  taxcodeForm : FormGroup;
+  get nameInput(){
+    return this.taxcodeForm.get('nameInput')
   }
+
   title = 'taxcode';
-  protected readonly console = console;
 }
