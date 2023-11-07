@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {nameValidator} from "./name.directive";
 import {surnameValidator} from "./surname.directive";
 import {birthplaceValidator} from "./birthplace.directive";
+import {dateValidator} from "./date.directive";
 
 
 @Component({
@@ -18,7 +19,8 @@ export class AppComponent {
         {
           nameInput: this.builder.nonNullable.control('', [Validators.required, nameValidator()]),
           surnameInput: this.builder.nonNullable.control('', [Validators.required, surnameValidator()]),
-          birthplaceInput: this.builder.nonNullable.control('', [Validators.required, birthplaceValidator()])
+          birthplaceInput: this.builder.nonNullable.control('', [Validators.required, birthplaceValidator()]),
+          dateInput: this.builder.nonNullable.control('', [Validators.required, dateValidator()])
         },
         {updateOn: 'submit'})
 
@@ -36,6 +38,10 @@ export class AppComponent {
 
   get birthplaceInput(){
     return this.taxcodeForm.get('birthplaceInput')
+  }
+
+  get dateInput(){
+    return this.taxcodeForm.get("dateInput")
   }
 
   title = 'taxcode';

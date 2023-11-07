@@ -32,12 +32,18 @@
   </div>
   <div id="date-input-field">
     <label for="date-of-birth">Data di nascita: </label>
-    <input type="date" required name="date-of-birth" id="date-of-birth" max="2023-11-07"/>
+    <input type="date" required name="date-of-birth" id="date-of-birth" formControlName="dateInput"/>
+    <span *ngIf=" dateInput?.value != '' && dateInput?.touched && dateInput?.errors">
+      <p>Sembra che la data sia futura!</p>
+    </span>
+    <span *ngIf="dateInput?.hasError('required') && dateInput?.touched">
+      <p>Il campo della data di nascita è vuoto!</p>
+    </span>
   </div>
   <div id="gender-input-field">
     <div class="radio-wrapper">
       <label for="male">M</label>
-      <input type="radio" id="male" name="radio-gender" required>
+      <input type="radio" id="male" name="radio-gender" required checked>
     </div>
     <div class="radio-wrapper">
       <label for="female">F</label>

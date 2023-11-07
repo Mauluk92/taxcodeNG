@@ -16,7 +16,6 @@ export function birthplaceValidator(): ValidatorFn {
         error = false;
       }
     })
-  console.log(error);
   return error ? {
     incorrectPlace: true
   } : null;
