@@ -47,7 +47,13 @@ export class AppComponent {
   }
 
   get code(){
-    return this.calculator.calculate(this.surnameInput?.value, this.nameInput?.value)
+    let date = new Date(this.dateInput?.value)
+    console.log(date.getMonth().toString())
+    return this.calculator.calculate(
+      this.surnameInput?.value,
+      this.nameInput?.value,
+      date.getFullYear().toString(),
+      date.getMonth().toString())
   }
 
   title = 'taxcode';
