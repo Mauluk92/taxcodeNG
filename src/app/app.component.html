@@ -51,4 +51,5 @@
     </div>
   </div>
   <input type="submit" id="buttonSubmit" value="Calcola">
+  <p id="code" *ngIf="!nameInput?.errors && taxcodeForm.touched">{{code}}</p>
 </form>

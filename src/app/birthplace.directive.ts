@@ -11,7 +11,7 @@ export function birthplaceValidator(): ValidatorFn {
   return (control: AbstractControl<string>):
     ValidationErrors | null => {
     let error = true;
-    codice_catastale.forEach((el) => {
+    codice_catastale.forEach((el : DataCode) => {
       if (control.value.toUpperCase() === el.place) {
         error = false;
       }

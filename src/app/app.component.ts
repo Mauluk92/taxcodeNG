@@ -4,6 +4,7 @@ import {nameValidator} from "./name.directive";
 import {surnameValidator} from "./surname.directive";
 import {birthplaceValidator} from "./birthplace.directive";
 import {dateValidator} from "./date.directive";
+import {CalculatorService} from "./calculator.service";
 
 
 @Component({
@@ -12,7 +13,8 @@ import {dateValidator} from "./date.directive";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private builder: FormBuilder) {
+  constructor(private builder: FormBuilder,
+              private calculator: CalculatorService) {
     this.taxcodeForm = this.builder
       .nonNullable
       .group(
@@ -42,6 +44,10 @@ export class AppComponent {
 
   get dateInput(){
     return this.taxcodeForm.get("dateInput")
+  }
+
+  get code(){
+    return this.calculator.calculate(this.surnameInput?.value, this.nameInput?.value)
   }
 
   title = 'taxcode';
