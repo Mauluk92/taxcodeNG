@@ -12,15 +12,27 @@
 
   <div id="surname-input-field">
     <label for="surname">Cognome: </label>
-    <input type="text" required name="surname" id="surname"/>
+    <input type="text" required name="surname" id="surname" formControlName="surnameInput"/>
+    <span *ngIf=" surnameInput?.value != '' && surnameInput?.touched && surnameInput?.errors">
+      <p>Il cognome non può contenere numeri o caratteri speciali, controllare nuovamente!</p>
+    </span>
+    <span *ngIf="surnameInput?.hasError('required') && surnameInput?.touched">
+      <p>Il campo del cognome è vuoto!</p>
+    </span>
   </div>
   <div id="birth-place-input-field">
     <label for="birth-place">Luogo di nascita: </label>
-    <input type="text" required name="birth-place" id="birth-place"/>
+    <input type="text" required name="birth-place" id="birth-place" formControlName="birthplaceInput"/>
+    <span *ngIf=" birthplaceInput?.value != '' && birthplaceInput?.touched && birthplaceInput?.errors">
+      <p>Sembra che il luogo da te scelto non esista!</p>
+    </span>
+    <span *ngIf="birthplaceInput?.hasError('required') && birthplaceInput?.touched">
+      <p>Il campo del luogo di nascita è vuoto!</p>
+    </span>
   </div>
   <div id="date-input-field">
     <label for="date-of-birth">Data di nascita: </label>
-    <input type="date" required name="date-of-birth" id="date-of-birth"/>
+    <input type="date" required name="date-of-birth" id="date-of-birth" max="2023-11-07"/>
   </div>
   <div id="gender-input-field">
     <div class="radio-wrapper">
@@ -32,6 +44,5 @@
       <input type="radio" id="female" name="radio-gender">
     </div>
   </div>
-  <input type="submit" id="buttonSubmit">
-  <label for="buttonSubmit">Submit</label>
+  <input type="submit" id="buttonSubmit" value="Calcola">
 </form>
