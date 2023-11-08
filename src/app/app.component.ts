@@ -59,7 +59,8 @@ export class AppComponent {
       date.getFullYear().toString(),
       date.getMonth().toString(),
       date.getDate().toString(),
-      this.genderInput?.value
+      this.genderInput?.value,
+      this.birthplaceInput?.value
       )
   }
 
