@@ -43,13 +43,13 @@
   <div id="gender-input-field">
     <div class="radio-wrapper">
       <label for="male">M</label>
-      <input type="radio" id="male" name="radio-gender" required checked>
+      <input type="radio" id="male" name="genderInput" required checked value="M" formControlName="genderInput">
     </div>
     <div class="radio-wrapper">
       <label for="female">F</label>
-      <input type="radio" id="female" name="radio-gender">
+      <input type="radio" id="female" name="genderInput" value="F" formControlName="genderInput">
     </div>
   </div>
   <input type="submit" id="buttonSubmit" value="Calcola">
-  <p id="code" *ngIf="!nameInput?.errors && taxcodeForm.touched">{{code}}</p>
+  <p id="code" *ngIf="taxcodeForm.valid">{{code}}</p>
 </form>

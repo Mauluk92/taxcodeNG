@@ -22,7 +22,8 @@ export class AppComponent {
           nameInput: this.builder.nonNullable.control('', [Validators.required, nameValidator()]),
           surnameInput: this.builder.nonNullable.control('', [Validators.required, surnameValidator()]),
           birthplaceInput: this.builder.nonNullable.control('', [Validators.required, birthplaceValidator()]),
-          dateInput: this.builder.nonNullable.control('', [Validators.required, dateValidator()])
+          dateInput: this.builder.nonNullable.control('', [Validators.required, dateValidator()]),
+          genderInput: this.builder.nonNullable.control('', [Validators.required])
         },
         {updateOn: 'submit'})
 
@@ -46,15 +47,22 @@ export class AppComponent {
     return this.taxcodeForm.get("dateInput")
   }
 
+  get genderInput(){
+    return this.taxcodeForm.get("genderInput")
+  }
+
   get code(){
     let date = new Date(this.dateInput?.value)
-    console.log(date.getMonth().toString())
     return this.calculator.calculate(
       this.surnameInput?.value,
       this.nameInput?.value,
       date.getFullYear().toString(),
-      date.getMonth().toString())
+      date.getMonth().toString(),
+      date.getDate().toString(),
+      this.genderInput?.value
+      )
   }
 
   title = 'taxcode';
+  protected readonly Object = Object;
 }
