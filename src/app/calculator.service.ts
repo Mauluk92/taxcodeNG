@@ -5,6 +5,7 @@ import {YearCalculatorService} from "./year-calculator.service";
 import {MonthCalculatorService} from "./month-calculator.service";
 import {DayCalculatorService} from "./day-calculator.service";
 import {CodeCalculatorService} from "./code-calculator.service";
+import {ControlCodeCalculatorService} from "./control-code-calculator.service";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class CalculatorService {
               private yearCalculator: YearCalculatorService,
               private monthCalculator: MonthCalculatorService,
               private dayCalculator: DayCalculatorService,
-              private codeCalculator: CodeCalculatorService) {
+              private codeCalculator: CodeCalculatorService,
+              private controlCodeCalculator: ControlCodeCalculatorService) {
   }
 
   public calculate(surname:string,
@@ -32,6 +34,7 @@ export class CalculatorService {
     const monthCode : string = this.monthCalculator.calculateMonthCode(month)
     const dayCode : string = this.dayCalculator.calculateDayCode(day, gender);
     const code : string = this.codeCalculator.calculateCode(place);
-    return surnameCode + nameCode + yearCode + monthCode + dayCode + code;
+    let taxcode : string = surnameCode + nameCode + yearCode + monthCode + dayCode + code;
+    return taxcode  + this.controlCodeCalculator.calculateControlCode(taxcode);
   }
 }

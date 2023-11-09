@@ -65,5 +65,4 @@ export class AppComponent {
   }
 
   title = 'taxcode';
-  protected readonly Object = Object;
 }
